@@ -6,8 +6,10 @@ project(hello_world)
 find_package(IncludeOS REQUIRED)
 include(os)
 
-os_add_executable(hello "Hello world - OS included" main.cpp)
-os_add_stdout(hello default_stdout)
+file(GLOB SRCS "*.cpp"S)
+
+os_add_executable(bonnios "BonnieIncludeOS" ${SRCS})
+os_add_stdout(bonnios default_stdout)
 
 set(ELF_SYMBOLS true)
 set(BINARY_NAME hello)

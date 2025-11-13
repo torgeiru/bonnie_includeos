@@ -3,15 +3,15 @@
   smp ? false, # Enable SMP support
 
   includeos ? import (builtins.fetchGit {
-        url = "https://github.com/includeos/IncludeOS.git";
-        ref = "main";
+        url = "https://github.com/torgeiru/IncludeOS";
+        ref = "virtio_devices_benchmark";
       }) { inherit smp; inherit withCcache; },
 }:
 let
   stdenv = includeos.stdenv;
 in
 stdenv.mkDerivation {
-  name = "IncludeOS Hello world";
+  name = "Bonnie++ port to IncludeOS";
   version = "dev";
 
   src = ./src;

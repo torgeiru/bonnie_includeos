@@ -9,8 +9,8 @@
   vmrunner ? "",
 
   includeos ? import (builtins.fetchGit {
-        url = "https://github.com/includeos/IncludeOS.git";
-        ref = "main";
+        url = "https://github.com/torgeiru";
+        ref = "virtio_devices_benchmark";
       }) { inherit smp; inherit withCcache; },
 
 }:
@@ -39,10 +39,11 @@ pkgs.mkShell.override { inherit (includeos) stdenv; } rec {
   bootloader="${includeos}/boot/bootloader";
 
   shellHook = ''
-    echo "To build the hello_world unikernel:"
-    echo " cmake src/CMakeLists.txt -B ./build"
-    echo " cd ./build"
-    echo " make"
-    echo " boot ./hello.elf.bin"
+    # TODO: Add a command to configure and build Bonnie++
+    # echo "To build the hello_world unikernel:"
+    # echo " cmake src/CMakeLists.txt -B ./build"
+    # echo " cd ./build"
+    # echo " make"
+    # echo " boot ./hello.elf.bin"
   '';
 }
